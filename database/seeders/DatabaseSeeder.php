@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'username' => 'admin',
-            'password' => \Illuminate\Support\Facades\Hash::make('password123'),
-        ]);
+        User::firstOrCreate(
+            ['username' => 'admin'],
+            ['password' => \Illuminate\Support\Facades\Hash::make('password123')]
+        );
 
         $this->call([
             PemainOlahragaSeeder::class,
